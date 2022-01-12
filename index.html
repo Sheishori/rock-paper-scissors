@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Rock Paper Scissors Game</title>
+	</head>
+	<body>
+		<script>
+		
+		function computerPlay () {
+			let random = Math.floor((Math.random()*10) % 3);
+			let choice = (random === 0) ? "Rock" :
+			(random === 1) ? "Paper" :
+			"Scissors";
+			return choice;
+		}
+
+		console.log(computerPlay());
+
+		</script>
+	</body>
+</html>
