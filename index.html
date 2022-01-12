@@ -8,7 +8,7 @@
 		<script>
 		
 		function playerPlay () { // let player make a selection
-			let playerSelection = '';
+			let playerSelection = "";
 			let keepGoing = true;
 			while (keepGoing) {
 				playerSelection = prompt("Choose rock paper or scissors!")
@@ -19,22 +19,28 @@
 			}
 			return playerSelection;
 		}
-		console.log(playerPlay());
+		//console.log(playerPlay());
 
 		function computerPlay () { // let computer make a selection
 			let random = Math.floor((Math.random()*10) % 3);
-			let computerSelection = (random === 0) ? "Rock" :
-			(random === 1) ? "Paper" :
-			"Scissors";
+			let computerSelection = (random === 0) ? "rock" :
+			(random === 1) ? "paper" :
+			"scissors";
 			return computerSelection;
 		}
 		//console.log(computerPlay());
 
-		function game(playerSelection, computerSelection) {
-
+		function playRound(playerSelection, computerSelection) {
+			if (playerSelection === "rock" && computerSelection === "scissors" ||
+					playerSelection === "paper" && computerSelection === "rock" ||
+					playerSelection === "scissors" && computerSelection === "paper") {
+						console.log(`You won! ${playerSelection} beats ${computerSelection}.`)
+					} else {
+						console.log(`You lost! ${computerSelection} beats ${playerSelection}.`)
+					}
 		}
 
-		//game(playerPlay(), computerPlay());
+		playRound(playerPlay(), computerPlay());
 
 		</script>
 	</body>
