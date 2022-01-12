@@ -12,10 +12,11 @@
 			let keepGoing = true;
 			while (keepGoing) {
 				playerSelection = prompt("Choose rock paper or scissors!")
-				playerSelection = playerSelection.toLowerCase();
-				if (playerSelection === "rock" ||
-						playerSelection === "paper" ||
-						playerSelection === "scissors") keepGoing = false;
+				let firstLetter = playerSelection.charAt(0);
+				playerSelection = firstLetter.toUpperCase() + playerSelection.substr(1);
+				if (playerSelection === "Rock" ||
+						playerSelection === "Paper" ||
+						playerSelection === "Scissors") keepGoing = false;
 			}
 			return playerSelection;
 		}
@@ -23,20 +24,22 @@
 
 		function computerPlay () { // let computer make a selection
 			let random = Math.floor((Math.random()*10) % 3);
-			let computerSelection = (random === 0) ? "rock" :
-			(random === 1) ? "paper" :
-			"scissors";
+			let computerSelection = (random === 0) ? "Rock" :
+			(random === 1) ? "Paper" :
+			"Scissors";
 			return computerSelection;
 		}
 		//console.log(computerPlay());
 
 		function playRound(playerSelection, computerSelection) {
-			if (playerSelection === "rock" && computerSelection === "scissors" ||
-					playerSelection === "paper" && computerSelection === "rock" ||
-					playerSelection === "scissors" && computerSelection === "paper") {
-						console.log(`You won! ${playerSelection} beats ${computerSelection}.`)
+			if (playerSelection === "Rock" && computerSelection === "Scissors" ||
+					playerSelection === "Paper" && computerSelection === "Rock" ||
+					playerSelection === "Scissors" && computerSelection === "Paper") {
+						console.log(`You won! ${playerSelection} beats ${computerSelection.toLowerCase()}.`)
+					} else if (playerSelection === computerSelection) {
+						console.log("It's a tie!");
 					} else {
-						console.log(`You lost! ${computerSelection} beats ${playerSelection}.`)
+						console.log(`You lost! ${computerSelection} beats ${playerSelection.toLowerCase()}.`)
 					}
 		}
 
