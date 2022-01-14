@@ -47,7 +47,13 @@
 					}
 		}
 
-		console.log(playRound(playerPlay(), computerPlay()));
+		function game() {
+			for (let i = 0; i < 5; i++) {
+				console.log(playRound(playerPlay(), computerPlay()));
+			}
+		}
+
+		game();
 
 		</script>
 	</body>
