@@ -74,7 +74,7 @@
 		}
 		
 		function playGame() { // play the game 5 times while printing out the round number and keeping the score
-			let score = [0, 0];
+			const score = [0, 0];
 			for (let round = 1; round < 6; round++) {
 				console.log(`Round ${round}`);
 				let roundResult = playRound(playerPlay(), computerPlay());
