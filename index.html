@@ -85,6 +85,7 @@
 					round--;
 				} else addPoint(roundResult, score);
 				if (round === 5) printResult(score); // only print out results after the last game
+				// printResult included inside the loop to avoid defining the round variable before the loop
 			}
 		}
 
