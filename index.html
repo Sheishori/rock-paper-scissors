@@ -13,14 +13,17 @@
 			while (keepGoing) {
 				playerSelection = prompt("Choose rock paper or scissors!");
 				if (playerSelection === null || playerSelection === undefined) {
-					if (confirm("Stop playing?")) break;
-				} else {
-					let firstLetter = playerSelection.charAt(0);
-					playerSelection = firstLetter.toUpperCase() + playerSelection.substr(1);
-					if (playerSelection === "Rock" ||
-							playerSelection === "Paper" ||
-							playerSelection === "Scissors") keepGoing = false;
+					if (confirm("Stop playing?")) {
+						break;
+					} else {
+						continue;
+					}
 				}
+				let firstLetter = playerSelection.charAt(0);
+				playerSelection = firstLetter.toUpperCase() + playerSelection.substr(1);
+				if (playerSelection === "Rock" ||
+					playerSelection === "Paper" ||
+					playerSelection === "Scissors") keepGoing = false;
 			}
 			return playerSelection;
 		}
@@ -39,30 +42,30 @@
 			if (playerSelection === null || playerSelection === undefined) return;
 			console.log(`Player: ${playerSelection}, Computer: ${computerSelection}`)
 			if (playerSelection === "Rock" && computerSelection === "Scissors" ||
-					playerSelection === "Paper" && computerSelection === "Rock") {
-						console.log(`${playerSelection} beats ${computerSelection.toLowerCase()}`);
-						return roundResult = 1;
-					} else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-						console.log("Scissors beat paper");
-						return roundResult = 1;
-					} else if (playerSelection === computerSelection) {
-						console.log("It's a tie! Try again");
-						return roundResult = 0;
-					} else if (computerSelection === "Scissors" && playerSelection === "Paper") {
-						console.log("Scissors beat paper");
-						return roundResult = 2;
-					} else {
-						console.log(`${computerSelection} beats ${playerSelection.toLowerCase()}`);
-						return roundResult = 2;
-					}
+				playerSelection === "Paper" && computerSelection === "Rock") {
+				console.log(`${playerSelection} beats ${computerSelection.toLowerCase()}`);
+				return roundResult = 1;
+			} else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+				console.log("Scissors beat paper");
+				return roundResult = 1;
+			} else if (playerSelection === computerSelection) {
+				console.log("It's a tie! Try again");
+				return roundResult = 0;
+			} else if (computerSelection === "Scissors" && playerSelection === "Paper") {
+				console.log("Scissors beat paper");
+				return roundResult = 2;
+			} else {
+				console.log(`${computerSelection} beats ${playerSelection.toLowerCase()}`);
+				return roundResult = 2;
+			}
 		}
 
 		function addPoint(roundResult, score) { // increase the score for players
 			if (roundResult === 1) {
-					return score[0]++;
-				} else if (roundResult === 2) {
-					return score[1]++;
-				}
+				return score[0]++;
+			} else if (roundResult === 2) {
+				return score[1]++;
+			}
 		}
 		
 		function printResult(score) { // select a winner based on the score array
