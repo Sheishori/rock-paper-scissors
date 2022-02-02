@@ -1,0 +1,50 @@
+body {
+	margin-top: 48px;
+	font-family: Verdana, sans-serif;
+	text-align: center;
+}
+
+div {
+	margin: 8px;
+}
+
+.buttons button {
+	width: 80px;
+	height: 80px;
+	margin: 24px 12px 0;
+	font-size: 60px;
+	background-color: white;
+	border: none;
+	border-radius: 8px;
+}
+
+.buttons button:active {
+  background-color: rgb(255, 255, 170);
+}
+
+.selection {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.player,
+.computer {
+	width: 150px;
+}
+
+.result {
+	margin: 12px;
+}
+
+.end-result {
+	margin: 32px 0;
+}
+
+.result-text {
+	font-size: 20px;
+}
+
+.reset {
+	padding: 8px 16px;
+}
