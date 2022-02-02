@@ -1,13 +1,13 @@
-const selection = document.querySelector('#selection');
-const result = document.querySelector('#round-result');
-const endScore = document.querySelector('#end-score');
+const gameButtons = document.querySelectorAll('button');
+const textFields = document.querySelector('.text');
 
-const buttons = document.querySelectorAll('button');
+const selection = document.createElement('div');
+const result = document.createElement('div');
+const endScore = document.createElement('div');
+const reset = document.createElement('button');
+reset.textContent = 'Play again?';
+
 let score = [0, 0];
-
-buttons.forEach((button) => {
-	button.addEventListener('click', playerPlay);
-});
 
 function playerPlay(e) {
 	let playerSelection = e.target.textContent;
@@ -15,11 +15,16 @@ function playerPlay(e) {
 }
 
 function playGame(playerSelection) { // play the game keeping the score
-	let roundResult = playRound(playerSelection, computerPlay());
-	// if a tie (roundResult === 0), don't increase the score
-	if (roundResult !== 0) addPoint(roundResult, score);
-	if (score[0] === 5 || score[1] === 5) {
-		printResult(score);
+	if (score[0] < 5 && score[1] < 5) {
+		let roundResult = playRound(playerSelection, computerPlay());
+		if (roundResult !== 0) addPoint(roundResult, score); // if a tie don't increase the score
+		textFields.appendChild(selection);
+		textFields.appendChild(result);
+		if (score[0] === 5 || score[1] === 5) {
+			selectWinner(score);
+			textFields.appendChild(endScore);
+			textFields.appendChild(reset);
+		}
 	}
 }
 
@@ -63,10 +68,22 @@ function addPoint(roundResult, score) { // increase the score for players
 	}
 }
 
-function printResult(score) { // select a winner based on the score array
+function selectWinner(score) { // select a winner based on the score array
 	if (score[0] > score[1]) {
 		endScore.textContent = `You won!\nScore:\nYou: ${score[0]}, Computer: ${score[1]}`;
 	} else {
 		endScore.textContent = `You lost!\nScore:\nComputer: ${score[1]}, You: ${score[0]}`;
 	}
 }
+
+gameButtons.forEach((button) => {
+	button.addEventListener('click', playerPlay);
+});
+
+reset.addEventListener('click', () => {
+	score = [0, 0];
+	textFields.removeChild(selection);
+	textFields.removeChild(result);
+	textFields.removeChild(endScore);
+	textFields.removeChild(reset);
+});
