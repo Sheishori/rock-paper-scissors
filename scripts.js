@@ -1,3 +1,16 @@
+const selection = document.querySelector('#selection');
+const result = document.querySelector('.result');
+const end = document.querySelector('#end');
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+	button.addEventListener('click', function (e) {
+		let playerSelection = e.target.textContent;
+		playRound(playerSelection, computerPlay());
+	});
+});
+
 function playerPlay () { // let player make a selection
 	let playerSelection = "";
 	let keepGoing = true;
@@ -31,22 +44,22 @@ function playRound(playerSelection, computerSelection) {
 	// check for the winner of the round, print out the result and return it as a numeric value
 	let roundResult = 0; // tie === 0; player won === 1, computer won === 2
 	if (playerSelection === null || playerSelection === undefined) return;
-	console.log(`Player: ${playerSelection}, Computer: ${computerSelection}`)
+	selection.textContent = `Player: ${playerSelection}, Computer: ${computerSelection}`;
 	if (playerSelection === "Rock" && computerSelection === "Scissors" ||
 		playerSelection === "Paper" && computerSelection === "Rock") {
-		console.log(`${playerSelection} beats ${computerSelection.toLowerCase()}`);
+		result.textContent = `${playerSelection} beats ${computerSelection.toLowerCase()}`;
 		return roundResult = 1;
 	} else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-		console.log("Scissors beat paper");
+		result.textContent = "Scissors beat paper";
 		return roundResult = 1;
 	} else if (playerSelection === computerSelection) {
-		console.log("It's a tie! Try again");
+		result.textContent = "It's a tie! Try again";
 		return roundResult = 0;
 	} else if (computerSelection === "Scissors" && playerSelection === "Paper") {
-		console.log("Scissors beat paper");
+		result.textContent = "Scissors beat paper";
 		return roundResult = 2;
 	} else {
-		console.log(`${computerSelection} beats ${playerSelection.toLowerCase()}`);
+		result.textContent = `${computerSelection} beats ${playerSelection.toLowerCase()}`;
 		return roundResult = 2;
 	}
 }
@@ -61,9 +74,9 @@ function addPoint(roundResult, score) { // increase the score for players
 
 function printResult(score) { // select a winner based on the score array
 	if (score[0] > score[1]) {
-		console.log(`You won!\nScore:\nYou: ${score[0]}, Computer: ${score[1]}`);
+		end.textContent = `You won!\nScore:\nYou: ${score[0]}, Computer: ${score[1]}`;
 	} else {
-		console.log(`You lost!\nScore:\nComputer: ${score[1]}, You: ${score[0]}`);
+		end.textContent = `You lost!\nScore:\nComputer: ${score[1]}, You: ${score[0]}`;
 	}
 }
 
@@ -74,7 +87,7 @@ function playGame() { // play the game 5 times while printing out the round numb
 		console.log(`Round ${round}`);
 		let roundResult = playRound(playerPlay(), computerPlay());
 		if (roundResult === undefined) {
-			console.log("Game cancelled");
+			end.textContent = "Game cancelled";
 			break;
 		} else if (roundResult === 0) { // if a tie, repeat the round
 			round--;
@@ -84,4 +97,4 @@ function playGame() { // play the game 5 times while printing out the round numb
 	if (round === 6) printResult(score);
 }
 
-playGame();
+// playGame();
