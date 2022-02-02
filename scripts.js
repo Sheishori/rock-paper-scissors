@@ -1,35 +1,26 @@
 const selection = document.querySelector('#selection');
-const result = document.querySelector('.result');
-const end = document.querySelector('#end');
+const result = document.querySelector('#round-result');
+const endScore = document.querySelector('#end-score');
 
 const buttons = document.querySelectorAll('button');
+let score = [0, 0];
 
 buttons.forEach((button) => {
-	button.addEventListener('click', function (e) {
-		let playerSelection = e.target.textContent;
-		playRound(playerSelection, computerPlay());
-	});
+	button.addEventListener('click', playerPlay);
 });
 
-function playerPlay () { // let player make a selection
-	let playerSelection = "";
-	let keepGoing = true;
-	while (keepGoing) {
-		playerSelection = prompt("Choose rock paper or scissors!");
-		if (playerSelection === null || playerSelection === undefined) {
-			if (confirm("Stop playing?")) {
-				break;
-			} else {
-				continue;
-			}
-		}
-		let firstLetter = playerSelection.charAt(0);
-		playerSelection = firstLetter.toUpperCase() + playerSelection.substr(1);
-		if (playerSelection === "Rock" ||
-			playerSelection === "Paper" ||
-			playerSelection === "Scissors") keepGoing = false;
+function playerPlay(e) {
+	let playerSelection = e.target.textContent;
+	playGame(playerSelection);
+}
+
+function playGame(playerSelection) { // play the game keeping the score
+	let roundResult = playRound(playerSelection, computerPlay());
+	// if a tie (roundResult === 0), don't increase the score
+	if (roundResult !== 0) addPoint(roundResult, score);
+	if (score[0] === 5 || score[1] === 5) {
+		printResult(score);
 	}
-	return playerSelection;
 }
 
 function computerPlay () { // let computer make a selection
@@ -74,27 +65,8 @@ function addPoint(roundResult, score) { // increase the score for players
 
 function printResult(score) { // select a winner based on the score array
 	if (score[0] > score[1]) {
-		end.textContent = `You won!\nScore:\nYou: ${score[0]}, Computer: ${score[1]}`;
+		endScore.textContent = `You won!\nScore:\nYou: ${score[0]}, Computer: ${score[1]}`;
 	} else {
-		end.textContent = `You lost!\nScore:\nComputer: ${score[1]}, You: ${score[0]}`;
+		endScore.textContent = `You lost!\nScore:\nComputer: ${score[1]}, You: ${score[0]}`;
 	}
 }
-
-function playGame() { // play the game 5 times while printing out the round number and keeping the score
-	let round = 1
-	const score = [0, 0];
-	for (; round < 6; round++) {
-		console.log(`Round ${round}`);
-		let roundResult = playRound(playerPlay(), computerPlay());
-		if (roundResult === undefined) {
-			end.textContent = "Game cancelled";
-			break;
-		} else if (roundResult === 0) { // if a tie, repeat the round
-			round--;
-		} else addPoint(roundResult, score);
-	}
-	// only print out results after all rounds and not when the game was cancelled
-	if (round === 6) printResult(score);
-}
-
-// playGame();
