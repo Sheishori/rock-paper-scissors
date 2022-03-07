@@ -31,7 +31,7 @@ function playGame(playerSelection) { // play the game keeping the score
 		if (score[0] === 5 || score[1] === 5) {
 			selectWinner(score);
 			textFields.appendChild(endResult);
-			textFields.appendChild(reset);
+			document.querySelector('body').insertBefore(reset, document.querySelector('.buttons'));
 		}
 	}
 }
@@ -111,4 +111,5 @@ reset.addEventListener('click', () => {
 	pHand.src = "./img/rock.png";
 	cHand.src = "./img/rock.gif";
 	textFields.textContent = "";
+	document.querySelector('body').removeChild(reset);
 });

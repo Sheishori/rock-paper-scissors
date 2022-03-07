@@ -76,6 +76,7 @@ h1 {
 }
 
 .reset {
+	margin-top: auto;
 	font-size: 20px;
 	padding: 8px 16px;
 }
