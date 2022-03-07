@@ -1,6 +1,2 @@
 # rock-paper-scissors
-A simple game of Rock Paper Scissors. Now less cursed
-
-TODO:
-- New icons
-- New layout
+A simple game of Rock Paper Scissors. All images made by me! :)
