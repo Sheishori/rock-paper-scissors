@@ -14,12 +14,36 @@ div {
 	margin: 24px 12px 0;
 	font-size: 60px;
 	background-color: white;
-	border: none;
-	border-radius: 8px;
+	border: 1px lightblue solid;
+	padding: 4px;
 }
 
 .buttons button:active {
   background-color: rgb(255, 255, 170);
+}
+
+#Rock {
+	background-image: url(/img/r_icon.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+  background-origin: content-box, padding-box;
+}
+
+#Paper {
+	background-image: url(/img/p_icon.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+  background-origin: content-box, padding-box;
+}
+
+#Scissors {
+	background-image: url(/img/s_icon.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+  background-origin: content-box, padding-box;
 }
 
 .selection {

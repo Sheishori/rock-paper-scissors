@@ -45,6 +45,9 @@ const reset = document.createElement('button');
 reset.classList.add('reset');
 reset.textContent = 'Play again?';
 
+const pHand = document.querySelector('.player-hand');
+const cHand = document.querySelector('.computer-hand');
+
 let score = [0, 0];
 
 function playerPlay(e) {
@@ -72,11 +75,17 @@ function computerPlay () { // let computer make a selection
 	let computerSelection = (random === 0) ? "Rock" :
 	(random === 1) ? "Paper" :
 	"Scissors";
+	if (computerSelection === "Rock") cHand.src = "/img/rock.gif";
+	else if (computerSelection === "Paper") cHand.src = "/img/paper.gif";
+	else cHand.src = "/img/scissors.gif";
 	cSelection.textContent = computerSelection;
 	return computerSelection;
 }
 
 function playRound(playerSelection, computerSelection) {
+	if (playerSelection === "Rock") pHand.src = "/img/rock.png";
+	else if (playerSelection === "Paper") pHand.src = "/img/paper.png";
+	else pHand.src = "/img/scissors.png";
 	// check for the winner of the round, print out the result and return it as a numeric value
 	let roundResult = 0; // tie === 0; player won === 1, computer won === 2
 	if (playerSelection === "Rock" && computerSelection === "Scissors" ||
