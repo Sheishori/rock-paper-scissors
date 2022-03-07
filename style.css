@@ -1,6 +1,7 @@
 body {
 	height: 90vh;
 	background-color: rgb(160, 198, 214);
+	font-size: 20px;
 	font-family: Verdana, sans-serif;
 	display: flex;
 	flex-direction: column;
@@ -8,14 +9,21 @@ body {
 	text-align: center;
 }
 
-div {
-	margin: 8px;
-}
-
 h1 {
 	font-family: 'Dancing Script';
-	font-size: 48px;
+	font-size: 60px;
 	text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+#hands {
+	display: flex;
+	align-items: center;
+}
+
+.vs {
+	margin: 0 50px;
+	font-size: 36px;
+	font-weight: 700;
 }
 
 .buttons {
@@ -23,10 +31,9 @@ h1 {
 }
 
 .buttons button {
-	width: 80px;
-	height: 80px;
+	width: 140px;
+	height: 140px;
 	margin: 24px 12px 0;
-	font-size: 60px;
 	padding: 4px;
 }
 
@@ -55,32 +62,20 @@ h1 {
 }
 
 #score {
-	font-size: 32px;
-}
-
-.selection {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.player,
-.computer {
-	width: 150px;
+	font-size: 46px;
 }
 
 .result {
-	margin: 12px;
+	font-size: 26px;
+	margin: 24px;
 }
 
 .end-result {
-	margin-top: 32px;
-}
-
-.result-text {
-	font-size: 20px;
+	margin: 24px;
+	font-size: 36px;
 }
 
 .reset {
+	font-size: 20px;
 	padding: 8px 16px;
 }
