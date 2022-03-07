@@ -31,7 +31,7 @@ h1 {
 }
 
 #Rock {
-	background-image: url(/img/r_icon.png);
+	background-image: url(./img/r_icon.png);
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -39,7 +39,7 @@ h1 {
 }
 
 #Paper {
-	background-image: url(/img/p_icon.png);
+	background-image: url(./img/p_icon.png);
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -47,7 +47,7 @@ h1 {
 }
 
 #Scissors {
-	background-image: url(/img/s_icon.png);
+	background-image: url(./img/s_icon.png);
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
