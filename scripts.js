@@ -31,15 +31,7 @@ const result = document.createElement('div');
 result.classList.add('result');
 
 const endResult = document.createElement('div');
-const resultText = document.createElement('div');
-const scoreText = document.createElement('div');
-const endScore = document.createElement('div');
 endResult.classList.add('end-result');
-resultText.classList.add('result-text');
-scoreText.textContent = 'Score:';
-endResult.appendChild(resultText);
-endResult.appendChild(scoreText);
-endResult.appendChild(endScore);
 
 const reset = document.createElement('button');
 reset.classList.add('reset');
@@ -48,7 +40,9 @@ reset.textContent = 'Play again?';
 const pHand = document.querySelector('.player-hand');
 const cHand = document.querySelector('.computer-hand');
 
+const scoreDisplay = document.querySelector('#score');
 let score = [0, 0];
+scoreDisplay.textContent = `${score[0]} : ${score[1]}`;
 
 function playerPlay(e) {
 	let playerSelection = e.target.id;
@@ -114,21 +108,23 @@ function playRound(playerSelection, computerSelection) {
 
 function addPoint(roundResult, score) { // increase the score for players
 	if (roundResult === 1) {
-		return score[0]++;
+		score[0]++;
+		scoreDisplay.textContent = `${score[0]} : ${score[1]}`;
+		return;
 	} else if (roundResult === 2) {
-		return score[1]++;
+		score[1]++;
+		scoreDisplay.textContent = `${score[0]} : ${score[1]}`;
+		return;
 	}
 }
 
 function selectWinner(score) { // select a winner based on the score array
 	if (score[0] > score[1]) {
-		resultText.textContent = 'You won!';
-		resultText.style.color = 'green';
-		endScore.textContent = `You: ${score[0]}, Computer: ${score[1]}`;
+		endResult.textContent = 'You won!';
+		endResult.style.color = 'green';
 	} else {
-		resultText.textContent = 'You lost!';
-		resultText.style.color = 'red';
-		endScore.textContent = `Computer: ${score[1]}, You: ${score[0]}`;
+		endResult.textContent = 'You lost!';
+		endResult.style.color = 'red';
 	}
 }
 
@@ -138,8 +134,8 @@ gameButtons.forEach((button) => {
 
 reset.addEventListener('click', () => {
 	score = [0, 0];
-	textFields.removeChild(selection);
-	textFields.removeChild(result);
-	textFields.removeChild(endResult);
-	textFields.removeChild(reset);
+	scoreDisplay.textContent = `${score[0]} : ${score[1]}`;
+	pHand.src = "/img/rock.png";
+	cHand.src = "/img/rock.gif";
+	textFields.textContent = "";
 });
